@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Villa Nova Corse — Agenda des événements culturels." />
+  <title>Villa Nova — Agenda Culturel</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body data-page="accueil">
+
+  <!-- Lien d'évitement : permet aux utilisateurs clavier de sauter au contenu principal -->
+  <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
+  <!-- Région live : annonce les changements dynamiques aux lecteurs d'écran -->
+  <div id="region-live" class="masque-visuellement" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Fond semi-transparent du menu burger : ferme le tiroir au clic -->
+  <div class="fond-menu" id="fond-menu"></div>
+
+  <!-- Tiroir de navigation : masqué par défaut, glisse depuis la gauche -->
+  <aside class="tiroir-nav" id="tiroir-nav"
+    role="dialog" aria-modal="true" aria-label="Menu de navigation" aria-hidden="true">
+    <div class="tiroir-entete">
+      <span>Villa Nova</span>
+      <button class="bouton-fermer-menu" type="button" aria-label="Fermer le menu">×</button>
+    </div>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="contact.html">📬 Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- En-tête : le bouton burger est le premier élément focusable de la page -->
+  <header class="entete" role="banner">
+    <button class="bouton-menu" type="button"
+      aria-label="Ouvrir le menu de navigation"
+      aria-expanded="false" aria-controls="tiroir-nav">
+      menu
+    </button>
+
+    <!-- Logo centré : aria-hidden car purement décoratif -->
+    <div class="entete-logo" aria-hidden="true">
+      <span class="logo-texte">Villa Nova</span>
+      <div class="logo-cercle">
+        <img src="images/logo_vn.png" alt="" width="70" height="70" />
+      </div>
+    </div>
+
+    <button class="bouton-recherche" type="button" aria-label="Rechercher un événement">
+      recherche
+    </button>
+  </header>
+
+  <!-- Contenu principal -->
+  <main id="contenu-principal">
+
+    <!-- Carrousel hero : les diapositives sont injectées par le script -->
+    <section aria-label="Événements à venir" aria-roledescription="carrousel">
+      <div class="banniere-hero">
+        <button class="bouton-carrousel precedent" type="button" aria-label="Événement précédent">‹</button>
+        <!-- Piste du carrousel : se translate horizontalement -->
+        <div class="piste-carrousel" id="piste-carrousel" aria-live="polite" aria-atomic="true"></div>
+        <button class="bouton-carrousel suivant" type="button" aria-label="Événement suivant">›</button>
+      </div>
+      <!-- Points de navigation pour accès direct à chaque diapositive -->
+      <div class="points-carrousel" id="points-carrousel" role="tablist" aria-label="Navigation du carrousel"></div>
+    </section>
+
+    <!-- Liste des événements : cartes injectées par le script -->
+    <section class="section-evenements" aria-labelledby="titre-liste">
+      <h2 id="titre-liste" class="masque-visuellement">Liste des événements</h2>
+      <div id="liste-evenements" class="liste-evenements" role="list" aria-label="Événements culturels">
+        <p class="message-chargement" aria-live="polite">Chargement…</p>
+      </div>
+    </section>
+
+    <!-- Calendrier : grande boîte avec image affiche, date, navigation par flèches -->
+    <!-- Flèches gauche/droite changent l'événement ; Entrée ouvre la fiche détail -->
+    <section class="section-calendrier" id="section-calendrier" aria-labelledby="titre-calendrier">
+      <h2 id="titre-calendrier" class="titre-calendrier">Événement à la une</h2>
+
+      <div class="rangee-calendrier">
+        <button class="fleche-calendrier" id="cal-precedent" type="button"
+          aria-label="Événement précédent dans le calendrier">‹</button>
+
+        <!-- Boîte cliquable : affiche l'image de l'affiche + la date superposée -->
+        <div class="boite-calendrier" id="boite-calendrier"
+          role="button" tabindex="0"
+          aria-label="Voir les détails de cet événement">
+          <img class="boite-image" id="image-calendrier"
+            src="https://picsum.photos/seed/cal/400/330"
+            alt="" aria-hidden="true" loading="lazy" width="300" height="330" />
+          <div class="boite-superposition">
+            <span class="cal-jour"          id="cal-jour">--</span>
+            <span class="cal-mois"          id="cal-mois">---</span>
+            <span class="cal-nom-evenement" id="nom-evenement-cal"></span>
+          </div>
+        </div>
+
+        <button class="fleche-calendrier" id="cal-suivant" type="button"
+          aria-label="Événement suivant dans le calendrier">›</button>
+      </div>
+
+      <!-- Compteur de position ex : "2 / 6" -->
+      <p class="compteur-calendrier" id="compteur-calendrier" aria-live="polite" aria-atomic="true">— / —</p>
+
+      <a href="#liste-evenements" class="bouton-agenda">Voir tout l'Agenda</a>
+    </section>
+
+  </main>
+
+  <!-- Pied de page : Accueil + Contact uniquement -->
+  <footer class="pied-page" role="contentinfo">
+    <a href="index.html" class="bouton-accueil">Accueil</a>
+    <a href="contact.html" class="bouton-contact-pied">Contact</a>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

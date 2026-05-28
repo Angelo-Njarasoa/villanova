@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Détails de l'événement — Villa Nova" />
+  <title>Événement — Villa Nova</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body data-page="detail">
+
+  <!-- Lien d'évitement -->
+  <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
+  <!-- Fond semi-transparent du menu burger -->
+  <div class="fond-menu" id="fond-menu"></div>
+
+  <!-- Tiroir de navigation -->
+  <aside class="tiroir-nav" id="tiroir-nav"
+    role="dialog" aria-modal="true" aria-label="Menu de navigation" aria-hidden="true">
+    <div class="tiroir-entete">
+      <span>Villa Nova</span>
+      <button class="bouton-fermer-menu" type="button" aria-label="Fermer le menu">×</button>
+    </div>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="contact.html">📬 Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- En-tête : le bouton burger est le premier élément focusable -->
+  <header class="entete" role="banner">
+    <button class="bouton-menu" type="button"
+      aria-label="Ouvrir le menu de navigation"
+      aria-expanded="false" aria-controls="tiroir-nav">
+      menu
+    </button>
+    <div class="entete-logo" aria-hidden="true">
+      <span class="logo-texte">Villa Nova</span>
+      <div class="logo-cercle">
+        <img src="images/logo_vn.png" alt="" width="70" height="70" />
+      </div>
+    </div>
+    <button class="bouton-recherche" type="button" aria-label="Rechercher un événement">
+      recherche
+    </button>
+  </header>
+
+  <main id="contenu-principal">
+
+    <!-- Bandeau avec le titre de l'événement, rempli par le script -->
+    <div class="bandeau-evenement">
+      <h1 id="titre-evenement">Chargement…</h1>
+    </div>
+
+    <!-- Bloc photo : deux badges de dates superposés en haut de l'image -->
+    <section aria-label="Photo et dates de l'événement">
+      <div class="bloc-photo">
+        <div class="badges-dates" aria-label="Dates de l'événement">
+          <div class="badge">
+            <span class="badge-jour" id="badge1-jour">--</span>
+            <span class="badge-mois" id="badge1-mois">---</span>
+          </div>
+          <div class="badge">
+            <span class="badge-jour" id="badge2-jour">--</span>
+            <span class="badge-mois" id="badge2-mois">---</span>
+          </div>
+        </div>
+        <!-- Photo principale de l'événement, source injectée par le script -->
+        <img class="photo-principale" id="photo-evenement"
+          src="" alt="Photo de l'événement" width="800" height="280" />
+      </div>
+    </section>
+
+    <!-- Sections d'information pratique -->
+    <div class="sections-detail">
+
+      <section class="bloc-detail" aria-labelledby="titre-quand">
+        <h2 id="titre-quand">Quand ?</h2>
+        <p id="detail-quand">—</p>
+      </section>
+
+      <section class="bloc-detail" aria-labelledby="titre-ou">
+        <h2 id="titre-ou">Où ?</h2>
+        <p id="detail-ou">—</p>
+        <p id="detail-adresse" style="color:#666;font-size:0.85rem;margin-top:4px;"></p>
+        <div class="ligne-icone">
+          <div class="cercle-icone" aria-hidden="true">📍</div>
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+            aria-label="Voir le lieu sur la carte (ouvre dans un nouvel onglet)">Voir sur la carte</a>
+        </div>
+      </section>
+
+      <section class="bloc-detail" aria-labelledby="titre-tarifs">
+        <h2 id="titre-tarifs">Tarifs</h2>
+        <ul>
+          <li>Tarif plein : 6,50 €</li>
+          <li>Tarif réduit : 3,50 € — 18 à 25 ans, groupes dès 10 adultes</li>
+          <li>Gratuit : moins de 18 ans, étudiants, demandeurs d'emploi, carte handicap</li>
+          <li>Visite guidée : +2 € en sus du billet</li>
+        </ul>
+      </section>
+
+      <section class="bloc-detail" aria-labelledby="titre-rens">
+        <h2 id="titre-rens">Renseignements</h2>
+        <div class="ligne-icone">
+          <div class="cercle-icone" aria-hidden="true">📞</div>
+          <a href="tel:+33495000000" aria-label="Appeler le 04 95 00 00 00">04 95 00 00 00</a>
+        </div>
+        <div class="ligne-icone">
+          <div class="cercle-icone" aria-hidden="true">✉️</div>
+          <a href="mailto:contact@villenova.fr" aria-label="Envoyer un email">contact@villenova.fr</a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Présentation narrative de l'événement, titre et texte remplis par le script -->
+    <article class="presentation-evenement">
+      <h2 id="pres-titre">Présentation</h2>
+      <p id="pres-texte">Chargement…</p>
+    </article>
+
+    <!-- Boutons de partage sur les réseaux sociaux -->
+    <section class="section-reseaux" aria-label="Partager cet événement">
+      <a href="https://facebook.com" class="bouton-reseau"
+        target="_blank" rel="noopener noreferrer" aria-label="Partager sur Facebook (nouvel onglet)">f</a>
+      <a href="https://x.com" class="bouton-reseau"
+        target="_blank" rel="noopener noreferrer" aria-label="Partager sur X (nouvel onglet)">𝕏</a>
+      <a href="mailto:?subject=Événement Villa Nova" class="bouton-reseau"
+        aria-label="Partager par email">@</a>
+    </section>
+
+    <!-- Lien de retour vers la liste des événements -->
+    <a href="index.html" class="bouton-retour">← Retour à la liste</a>
+    <div style="height:16px;"></div>
+
+  </main>
+
+  <!-- Pied de page : Accueil + Contact uniquement -->
+  <footer class="pied-page" role="contentinfo">
+    <a href="index.html" class="bouton-accueil">Accueil</a>
+    <a href="contact.html" class="bouton-contact-pied">Contact</a>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

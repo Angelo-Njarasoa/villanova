@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contactez la mairie de Villa Nova — Agenda culturel Corse." />
+  <title>Contact — Villa Nova</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Styles propres à la page contact */
+    .page-contact { padding: 20px 16px 32px; max-width: 700px; margin: 0 auto; }
+    @media (min-width: 768px) { .page-contact { padding: 28px 32px 40px; } }
+
+    .page-contact h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: #1a3a5c; margin-bottom: 6px;
+    }
+    .page-contact .sous-titre { font-size: 0.9rem; color: #666; margin-bottom: 28px; line-height: 1.5; }
+
+    /* Bloc des coordonnées fictives */
+    .infos-contact {
+      background: #fff; border-radius: 8px; border: 1px solid #ccc;
+      padding: 20px; margin-bottom: 24px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .infos-contact h2 {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: #7b5ea7; margin-bottom: 4px;
+    }
+    .ligne-info { display: flex; align-items: flex-start; gap: 12px; }
+    .icone-info {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: #7b5ea7; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .texte-info { display: flex; flex-direction: column; gap: 2px; }
+    .texte-info strong { font-size: 0.9rem; color: #1a3a5c; }
+    .texte-info span   { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+    /* Bloc formulaire de contact */
+    .bloc-formulaire {
+      background: #fff; border-radius: 8px; border: 1px solid #ccc;
+      padding: 20px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .bloc-formulaire h2 {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1a3a5c; margin-bottom: 4px;
+    }
+
+    /* Groupes de champs */
+    .groupe { display: flex; flex-direction: column; gap: 5px; }
+    .groupe label { font-size: 0.85rem; font-weight: 600; color: #333; }
+    .groupe .optionnel { font-size: 0.78rem; color: #888; font-weight: 400; font-style: italic; }
+    .groupe input,
+    .groupe select,
+    .groupe textarea {
+      width: 100%; padding: 10px 14px;
+      border: 1.5px solid #ccc; border-radius: 6px;
+      font-size: 0.9rem; font-family: 'Source Sans 3', sans-serif;
+      color: #333; background: #fafafa; transition: border-color 0.2s;
+    }
+    .groupe input:focus,
+    .groupe select:focus,
+    .groupe textarea:focus { border-color: #7b5ea7; background: #fff; }
+    .groupe textarea { resize: vertical; min-height: 110px; }
+
+    /* Deux champs côte à côte sur écran plus large */
+    .rangee-champs { display: flex; flex-direction: column; gap: 16px; }
+    @media (min-width: 600px) { .rangee-champs { flex-direction: row; } .rangee-champs .groupe { flex: 1; } }
+
+    /* Message d'erreur sous un champ invalide */
+    .erreur-champ { font-size: 0.78rem; color: #c0392b; display: none; }
+    .groupe.invalide input,
+    .groupe.invalide select,
+    .groupe.invalide textarea { border-color: #c0392b; }
+    .groupe.invalide .erreur-champ { display: block; }
+
+    /* Bouton d'envoi du formulaire */
+    .bouton-envoyer {
+      background: #4caf82; color: #fff; border: none; border-radius: 24px;
+      padding: 12px 32px; font-size: 15px; font-weight: 700;
+      font-family: 'Source Sans 3', sans-serif;
+      cursor: pointer; transition: background 0.2s; align-self: flex-start;
+    }
+    .bouton-envoyer:hover { background: #3a9070; }
+
+    /* Message de confirmation affiché après une soumission valide */
+    .message-succes {
+      display: none; background: #e8f8f1; border: 1.5px solid #4caf82;
+      border-radius: 8px; padding: 20px; text-align: center; color: #1a5c3a;
+    }
+    .message-succes.visible { display: block; }
+    .message-succes .icone-succes { font-size: 2.5rem; margin-bottom: 8px; }
+    .message-succes h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .message-succes p  { font-size: 0.9rem; color: #555; }
+  </style>
+</head>
+
+<body data-page="contact">
+
+  <!-- Lien d'évitement -->
+  <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
+  <!-- Fond semi-transparent du menu burger -->
+  <div class="fond-menu" id="fond-menu"></div>
+
+  <!-- Tiroir de navigation -->
+  <aside class="tiroir-nav" id="tiroir-nav"
+    role="dialog" aria-modal="true" aria-label="Menu de navigation" aria-hidden="true">
+    <div class="tiroir-entete">
+      <span>Villa Nova</span>
+      <button class="bouton-fermer-menu" type="button" aria-label="Fermer le menu">×</button>
+    </div>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="contact.html">📬 Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- En-tête : le bouton burger est le premier élément focusable -->
+  <header class="entete" role="banner">
+    <button class="bouton-menu" type="button"
+      aria-label="Ouvrir le menu de navigation"
+      aria-expanded="false" aria-controls="tiroir-nav">
+      menu
+    </button>
+    <div class="entete-logo" aria-hidden="true">
+      <span class="logo-texte">Villa Nova</span>
+      <div class="logo-cercle">
+        <img src="images/logo_vn.png" alt="" width="70" height="70" />
+      </div>
+    </div>
+    <button class="bouton-recherche" type="button" aria-label="Rechercher un événement">
+      recherche
+    </button>
+  </header>
+
+  <main id="contenu-principal">
+    <div class="page-contact">
+
+      <h1>Nous contacter</h1>
+      <p class="sous-titre">
+        Une question sur un événement, un partenariat ou la programmation culturelle ?
+        L'équipe de Villa Nova vous répond sous 48h.
+      </p>
+
+      <!-- Coordonnées fictives de la mairie de Villa Nova -->
+      <div class="infos-contact" aria-label="Coordonnées de Villa Nova">
+        <h2>Nos coordonnées</h2>
+
+        <div class="ligne-info">
+          <div class="icone-info" aria-hidden="true">📍</div>
+          <div class="texte-info">
+            <strong>Adresse</strong>
+            <span>Mairie de Villa Nova<br>12 Place du Borgo, 20100 Villa Nova, Corse</span>
+          </div>
+        </div>
+
+        <div class="ligne-info">
+          <div class="icone-info" aria-hidden="true">📞</div>
+          <div class="texte-info">
+            <strong>Téléphone</strong>
+            <span>
+              <a href="tel:+33495112233" aria-label="Appeler le 04 95 11 22 33">04 95 11 22 33</a>
+              <br>Lun–Ven : 9h–12h et 14h–17h
+            </span>
+          </div>
+        </div>
+
+        <div class="ligne-info">
+          <div class="icone-info" aria-hidden="true">✉️</div>
+          <div class="texte-info">
+            <strong>Email</strong>
+            <span>
+              <a href="mailto:culture@villenova-corse.fr"
+                aria-label="Envoyer un email à culture@villenova-corse.fr">
+                culture@villenova-corse.fr
+              </a>
+            </span>
+          </div>
+        </div>
+
+        <div class="ligne-info">
+          <div class="icone-info" aria-hidden="true">🕐</div>
+          <div class="texte-info">
+            <strong>Horaires d'ouverture</strong>
+            <span>Lundi au vendredi : 9h00 – 17h00<br>Fermé le week-end et jours fériés</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire de contact : validé par initialiserFormulaireContact() dans app.js -->
+      <div class="bloc-formulaire" role="region" aria-label="Formulaire de contact">
+        <h2>Envoyer un message</h2>
+
+        <!-- Message de succès : caché par défaut, affiché après soumission valide -->
+        <div class="message-succes" id="message-succes" role="alert" aria-live="polite" tabindex="-1">
+          <div class="icone-succes" aria-hidden="true">✅</div>
+          <h3>Message envoyé !</h3>
+          <p>Merci pour votre message. L'équipe Villa Nova vous répondra dans les 48h.</p>
+        </div>
+
+        <form id="formulaire-contact" novalidate aria-label="Formulaire de contact">
+
+          <!-- Nom et prénom côte à côte sur tablette et desktop -->
+          <div class="rangee-champs">
+            <div class="groupe" id="groupe-nom">
+              <label for="nom">Nom <span aria-hidden="true">*</span><span class="masque-visuellement">(obligatoire)</span></label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont"
+                autocomplete="family-name" required aria-required="true" aria-describedby="erreur-nom" />
+              <span class="erreur-champ" id="erreur-nom" role="alert">Veuillez saisir votre nom.</span>
+            </div>
+            <div class="groupe" id="groupe-prenom">
+              <label for="prenom">Prénom <span aria-hidden="true">*</span><span class="masque-visuellement">(obligatoire)</span></label>
+              <input type="text" id="prenom" name="prenom" placeholder="Marie"
+                autocomplete="given-name" required aria-required="true" aria-describedby="erreur-prenom" />
+              <span class="erreur-champ" id="erreur-prenom" role="alert">Veuillez saisir votre prénom.</span>
+            </div>
+          </div>
+
+          <div class="groupe" id="groupe-email">
+            <label for="email">Email <span aria-hidden="true">*</span><span class="masque-visuellement">(obligatoire)</span></label>
+            <input type="email" id="email" name="email" placeholder="marie.dupont@email.fr"
+              autocomplete="email" required aria-required="true" aria-describedby="erreur-email" />
+            <span class="erreur-champ" id="erreur-email" role="alert">Veuillez saisir une adresse email valide.</span>
+          </div>
+
+          <div class="groupe" id="groupe-sujet">
+            <label for="sujet">Sujet <span aria-hidden="true">*</span><span class="masque-visuellement">(obligatoire)</span></label>
+            <select id="sujet" name="sujet" required aria-required="true" aria-describedby="erreur-sujet">
+              <option value="">-- Choisissez un sujet --</option>
+              <option value="info">Informations sur un événement</option>
+              <option value="partenariat">Partenariat / Sponsoring</option>
+              <option value="programmation">Proposition de programmation</option>
+              <option value="presse">Demande presse</option>
+              <option value="autre">Autre</option>
+            </select>
+            <span class="erreur-champ" id="erreur-sujet" role="alert">Veuillez choisir un sujet.</span>
+          </div>
+
+          <div class="groupe" id="groupe-message">
+            <label for="message">Message <span aria-hidden="true">*</span><span class="masque-visuellement">(obligatoire)</span></label>
+            <textarea id="message" name="message" placeholder="Décrivez votre demande…"
+              required aria-required="true" aria-describedby="erreur-message" rows="5"></textarea>
+            <span class="erreur-champ" id="erreur-message" role="alert">Veuillez écrire votre message.</span>
+          </div>
+
+          <!-- Téléphone : champ optionnel, non soumis à validation -->
+          <div class="groupe">
+            <label for="telephone">Téléphone <span class="optionnel">(optionnel)</span></label>
+            <input type="tel" id="telephone" name="telephone"
+              placeholder="06 12 34 56 78" autocomplete="tel" />
+          </div>
+
+          <button type="submit" class="bouton-envoyer">Envoyer le message</button>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Pied de page : Accueil + Contact uniquement -->
+  <footer class="pied-page" role="contentinfo">
+    <a href="index.html" class="bouton-accueil">Accueil</a>
+    <a href="contact.html" class="bouton-contact-pied">Contact</a>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

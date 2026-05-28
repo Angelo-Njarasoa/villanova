@@ -1,0 +1,424 @@
+/* ============================================
+   VILLA NOVA — Feuille de style principale
+   Approche Mobile First | Accessibilité WCAG AA
+   ============================================ */
+
+/* Importation des polices Google Fonts
+   Playfair Display pour les titres (serif italique)
+   Source Sans 3 pour les textes courants (sans-serif) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+/* --- Réinitialisation --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: #d8d8d8; color: #333; min-height: 100vh; }
+img { max-width: 100%; height: auto; display: block; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+
+/* Lien d'évitement : permet aux utilisateurs clavier de sauter directement au contenu principal */
+.lien-evitement {
+  position: absolute; top: -60px; left: 8px;
+  background: #1a3a5c; color: #fff;
+  padding: 10px 18px; border-radius: 0 0 6px 6px;
+  font-size: 14px; font-weight: 600; z-index: 9999;
+  transition: top 0.2s; text-decoration: none;
+}
+.lien-evitement:focus { top: 0; }
+
+/* Classe utilitaire pour masquer visuellement un élément
+   tout en le gardant accessible aux lecteurs d'écran */
+.masque-visuellement {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ============================================
+   Contour de focus clavier — WCAG AA
+   Visible sur tous les éléments interactifs,
+   supprimé pour les utilisateurs souris
+   ============================================ */
+*:focus { outline: none; }
+*:focus-visible {
+  outline: 3px solid #4caf82 !important;
+  outline-offset: 3px !important;
+}
+
+/* ============================================
+   EN-TÊTE — sticky, logo centré
+   ============================================ */
+.entete {
+  background: #f5f5f5; border-bottom: 1px solid #ccc;
+  padding: 8px 16px; position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 94px;
+}
+@media (min-width: 768px) { .entete { padding: 8px 32px; } }
+
+/* Logo centré absolument dans l'en-tête */
+.entete-logo {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center;
+  top: 4px; pointer-events: none; z-index: 1;
+}
+.logo-texte {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px; font-style: italic;
+  color: #1a3a5c; letter-spacing: 1px; white-space: nowrap;
+}
+/* Cercle contenant le logo de la ville */
+.logo-cercle {
+  width: 70px; height: 70px; border-radius: 50%;
+  overflow: hidden; border: 3px solid #1a3a5c;
+  margin-top: 2px; background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+.logo-cercle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Bouton menu burger — vert, arrondi */
+.bouton-menu {
+  background: #4caf82; color: #fff; border: none; border-radius: 24px;
+  padding: 8px 20px; font-size: 13px; font-weight: 700;
+  font-family: 'Source Sans 3', sans-serif; cursor: pointer; transition: background 0.2s;
+}
+.bouton-menu:hover { background: #3a9070; }
+
+/* Bouton recherche — contour, fond blanc */
+.bouton-recherche {
+  background: #fff; color: #333; border: 1.5px solid #555; border-radius: 24px;
+  padding: 8px 20px; font-size: 13px; font-weight: 600;
+  font-family: 'Source Sans 3', sans-serif; cursor: pointer; transition: all 0.2s;
+}
+.bouton-recherche:hover { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+
+/* ============================================
+   MENU BURGER — tiroir latéral gauche
+   Le fond semi-transparent ferme le tiroir au clic
+   ============================================ */
+.fond-menu {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); z-index: 200;
+}
+.fond-menu.ouvert { display: block; }
+
+/* Tiroir : glisse depuis la gauche */
+.tiroir-nav {
+  position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+  background: #1a3a5c; z-index: 300; transition: left 0.3s ease;
+  display: flex; flex-direction: column; overflow-y: auto;
+}
+.tiroir-nav.ouvert { left: 0; }
+
+.tiroir-entete {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px; background: #0f2440;
+  border-bottom: 1px solid rgba(255,255,255,0.12); flex-shrink: 0;
+}
+.tiroir-entete span {
+  color: #fff; font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic;
+}
+/* Bouton de fermeture du tiroir */
+.bouton-fermer-menu {
+  background: none; border: none; color: #fff;
+  font-size: 30px; line-height: 1; cursor: pointer;
+  padding: 0 6px; border-radius: 4px; transition: background 0.2s; font-weight: 300;
+}
+.bouton-fermer-menu:hover { background: rgba(255,255,255,0.15); }
+
+/* Liens de navigation dans le tiroir */
+.tiroir-nav nav { flex: 1; }
+.tiroir-nav nav ul { padding: 20px 0; }
+.tiroir-nav nav ul li a {
+  display: block; padding: 18px 28px; color: #fff; font-size: 16px; font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s, padding-left 0.2s, color 0.2s;
+}
+.tiroir-nav nav ul li a:hover { background: rgba(76,175,130,0.2); padding-left: 38px; color: #7ddbb4; }
+
+/* ============================================
+   CARROUSEL HERO — bannière défilante
+   Chaque slide présente un événement
+   ============================================ */
+.banniere-hero { background: #7b5ea7; padding: 6px 44px 0; position: relative; overflow: hidden; }
+
+/* Piste qui translate horizontalement */
+.piste-carrousel { display: flex; transition: transform 0.42s ease; will-change: transform; }
+.diapo-carrousel { min-width: 100%; }
+
+/* Contenu intérieur de chaque diapositive */
+.diapo-interieur {
+  background: linear-gradient(135deg, #5a3d8a 0%, #7b5ea7 60%, #9b72cf 100%);
+  border-radius: 6px; margin: 0 auto; max-width: 720px; padding: 18px 20px;
+  color: #fff; text-align: center; cursor: pointer; transition: opacity 0.2s;
+}
+.diapo-interieur:hover { opacity: 0.9; }
+.diapo-etiquette { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+.diapo-titre { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; line-height: 1.3; margin-top: 4px; }
+@media (min-width: 768px) { .diapo-titre { font-size: 2rem; } }
+.diapo-date     { font-size: 0.85rem; opacity: 0.88; margin-top: 5px; }
+.diapo-lieu     { font-size: 0.8rem;  opacity: 0.72; margin-top: 2px; }
+
+/* Boutons de navigation gauche/droite du carrousel */
+.bouton-carrousel {
+  position: absolute; top: 50%; transform: translateY(-55%);
+  background: rgba(255,255,255,0.2); border: none; color: #fff;
+  font-size: 1.6rem; width: 34px; height: 34px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s; z-index: 2;
+}
+.bouton-carrousel:hover { background: rgba(255,255,255,0.42); }
+.bouton-carrousel.precedent { left: 6px; }
+.bouton-carrousel.suivant   { right: 6px; }
+
+/* Points de navigation du carrousel */
+.points-carrousel {
+  background: #7b5ea7; display: flex; align-items: center;
+  justify-content: center; gap: 8px; padding: 8px 0;
+}
+.points-carrousel span {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(255,255,255,0.35); cursor: pointer;
+  transition: background 0.2s; display: inline-block;
+}
+.points-carrousel span.actif { background: #fff; }
+
+/* ============================================
+   LISTE DES ÉVÉNEMENTS
+   ============================================ */
+.section-evenements { padding: 14px; }
+@media (min-width: 768px) { .section-evenements { padding: 16px 32px; } }
+.liste-evenements { display: flex; flex-direction: column; gap: 12px; }
+
+/* Carte événement : focus clavier avec bordure verte et ombre */
+.carte-evenement {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: #fff; border: 2px solid transparent; border-radius: 6px;
+  padding: 10px; cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  width: 100%; text-align: left;
+}
+.carte-evenement:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.14); transform: translateY(-2px); }
+.carte-evenement:focus-visible {
+  border-color: #4caf82 !important;
+  box-shadow: 0 0 0 3px rgba(76,175,130,0.35) !important;
+  transform: translateY(-2px); outline: none !important;
+}
+
+/* Image de la carte avec chargement différé (éco-conception) */
+.carte-image {
+  width: 90px; height: 68px; border-radius: 4px;
+  object-fit: cover; flex-shrink: 0; background: #ccc;
+}
+@media (min-width: 768px) { .carte-image { width: 120px; height: 88px; } }
+
+.carte-infos { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.carte-titre    { font-family: 'Playfair Display', serif; font-size: 0.98rem; font-weight: 700; color: #1a3a5c; line-height: 1.3; }
+.carte-date     { font-size: 0.8rem; color: #7b5ea7; font-weight: 600; }
+.carte-lieu     { font-size: 0.8rem; color: #666; }
+/* Description tronquée à 2 lignes */
+.carte-description {
+  font-size: 0.8rem; color: #666; line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.message-chargement { text-align: center; padding: 32px; color: #666; }
+.message-erreur     { text-align: center; padding: 32px; color: #c0392b; }
+
+/* Grille 2 colonnes sur grand écran */
+@media (min-width: 1024px) {
+  .liste-evenements   { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .carte-evenement    { flex-direction: column; }
+  .carte-image        { width: 100%; height: 150px; }
+}
+
+/* ============================================
+   SECTION CALENDRIER
+   Grande boîte avec image de l'affiche,
+   date superposée, navigable au clavier
+   ============================================ */
+.section-calendrier {
+  background: linear-gradient(180deg, #d0d0d0 0%, #b8b8b8 100%);
+  padding: 28px 16px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+@media (min-width: 768px) { .section-calendrier { padding: 36px 32px 28px; } }
+
+.titre-calendrier {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; color: #1a3a5c; font-style: italic;
+  text-align: center; letter-spacing: 0.5px;
+}
+
+/* Rangée : flèche gauche + boîte + flèche droite */
+.rangee-calendrier { display: flex; align-items: center; gap: 16px; }
+@media (min-width: 768px) { .rangee-calendrier { gap: 28px; } }
+
+/* Flèches violettes de navigation du calendrier */
+.fleche-calendrier {
+  background: none; border: none; color: #7b5ea7;
+  font-size: 3.5rem; line-height: 1; cursor: pointer;
+  padding: 6px 12px; border-radius: 8px;
+  transition: background 0.2s, transform 0.15s; font-weight: 300; flex-shrink: 0;
+}
+.fleche-calendrier:hover { background: rgba(123,94,167,0.14); transform: scale(1.1); }
+@media (min-width: 768px) { .fleche-calendrier { font-size: 4.5rem; } }
+
+/* Grande boîte image : cliquable, affiche l'affiche de l'événement */
+.boite-calendrier {
+  width: 200px; height: 220px; border-radius: 10px;
+  overflow: hidden; position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  border: 3px solid rgba(255,255,255,0.5); background: #555; display: block;
+}
+.boite-calendrier:hover { transform: scale(1.03); box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
+.boite-calendrier:focus-visible {
+  outline: 4px solid #4caf82 !important; outline-offset: 4px !important; transform: scale(1.03);
+}
+@media (min-width: 768px)  { .boite-calendrier { width: 260px; height: 290px; } }
+@media (min-width: 1024px) { .boite-calendrier { width: 300px; height: 330px; } }
+
+/* Image affiche de l'événement en fond de la boîte */
+.boite-image {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: transform 0.3s;
+}
+.boite-calendrier:hover .boite-image { transform: scale(1.05); }
+
+/* Bandeau dégradé en bas de la boîte, contient la date */
+.boite-superposition {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent 0%, rgba(26,58,92,0.92) 60%);
+  padding: 30px 12px 14px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.cal-jour {
+  font-size: 3rem; font-weight: 700; color: #fff; line-height: 1;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+@media (min-width: 768px) { .cal-jour { font-size: 3.8rem; } }
+.cal-mois {
+  font-size: 1rem; color: rgba(255,255,255,0.9);
+  text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-top: 2px;
+}
+.cal-nom-evenement {
+  font-size: 0.7rem; color: rgba(255,255,255,0.75);
+  text-align: center; margin-top: 5px; line-height: 1.3; max-width: 90%;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* Compteur de position ex : "2 / 6" */
+.compteur-calendrier {
+  font-size: 0.8rem; color: #666; text-align: center;
+  font-weight: 600; letter-spacing: 0.5px;
+}
+
+/* Bouton Voir tout l'Agenda */
+.bouton-agenda {
+  background: #4caf82; color: #fff; border: none; border-radius: 24px;
+  padding: 12px 32px; font-size: 15px; font-weight: 700;
+  font-family: 'Source Sans 3', sans-serif; cursor: pointer;
+  transition: background 0.2s; display: inline-block; text-decoration: none;
+}
+.bouton-agenda:hover { background: #3a9070; }
+
+/* ============================================
+   PIED DE PAGE — Accueil + Contact
+   ============================================ */
+.pied-page {
+  background: #7b5ea7; padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+@media (min-width: 768px) { .pied-page { padding: 10px 32px; } }
+
+/* Bouton Accueil : forme flèche pointant à gauche */
+.bouton-accueil {
+  background: #4caf82; color: #fff; border: none; border-radius: 22px;
+  padding: 9px 24px 9px 30px; font-size: 14px; font-weight: 700;
+  font-family: 'Source Sans 3', sans-serif; cursor: pointer;
+  transition: background 0.2s; display: inline-block; text-decoration: none;
+  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 50%);
+}
+.bouton-accueil:hover { background: #3a9070; }
+
+/* Bouton Contact : forme flèche pointant à droite */
+.bouton-contact-pied {
+  background: #4caf82; color: #fff; border: none; border-radius: 22px;
+  padding: 9px 30px 9px 24px; font-size: 14px; font-weight: 700;
+  font-family: 'Source Sans 3', sans-serif; cursor: pointer;
+  transition: background 0.2s; display: inline-block; text-decoration: none;
+  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+}
+.bouton-contact-pied:hover { background: #3a9070; }
+
+/* ============================================
+   PAGE DÉTAIL ÉVÉNEMENT
+   ============================================ */
+
+/* Bandeau avec le titre de l'événement */
+.bandeau-evenement { background: #555; padding: 12px 16px; text-align: center; }
+.bandeau-evenement h1 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; font-weight: 600; }
+@media (min-width: 768px) { .bandeau-evenement h1 { font-size: 1.25rem; } }
+
+/* Bloc photo : badges de dates superposés en haut de l'image */
+.bloc-photo { margin: 16px 16px 0; position: relative; }
+@media (min-width: 768px) { .bloc-photo { margin: 16px 32px 0; } }
+
+/* Les deux badges circulaires de dates (début et fin) */
+.badges-dates { display: flex; gap: 10px; justify-content: center; margin-bottom: -28px; position: relative; z-index: 2; }
+.badge {
+  width: 60px; height: 60px; border-radius: 50%; background: #7b5ea7; color: #fff;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  border: 2.5px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+}
+.badge-jour  { font-size: 1.15rem; font-weight: 700; line-height: 1; }
+.badge-mois  { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Photo principale de l'événement */
+.photo-principale { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; background: #ccc; }
+@media (min-width: 768px) { .photo-principale { height: 280px; } }
+
+/* Sections d'information pratique */
+.sections-detail { padding: 8px 16px; }
+@media (min-width: 768px) { .sections-detail { padding: 8px 32px; } }
+
+.bloc-detail { padding: 14px 0; border-bottom: 1px solid #ddd; }
+.bloc-detail h2 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 8px; }
+.bloc-detail p, .bloc-detail li { font-size: 0.9rem; color: #333; line-height: 1.6; }
+.bloc-detail ul { padding-left: 18px; }
+
+/* Ligne avec icône ronde + texte ou lien */
+.ligne-icone { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.cercle-icone { width: 36px; height: 36px; border-radius: 50%; background: #7b5ea7; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
+.ligne-icone a { color: #7b5ea7; font-size: 0.9rem; text-decoration: underline; }
+.ligne-icone a:hover { color: #5a3d8a; }
+
+/* Paragraphe de présentation de l'événement */
+.presentation-evenement { padding: 14px 16px; }
+@media (min-width: 768px) { .presentation-evenement { padding: 14px 32px; } }
+.presentation-evenement h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1a3a5c; margin-bottom: 10px; }
+.presentation-evenement p  { font-size: 0.9rem; color: #333; line-height: 1.7; margin-bottom: 8px; }
+
+/* Boutons de partage sur les réseaux sociaux */
+.section-reseaux { padding: 16px; display: flex; align-items: center; justify-content: center; gap: 16px; border-top: 1px solid #ddd; }
+.bouton-reseau {
+  width: 44px; height: 44px; border-radius: 50%; background: #1a3a5c; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 700; transition: background 0.2s, transform 0.2s;
+  cursor: pointer; border: none; text-decoration: none;
+}
+.bouton-reseau:hover { background: #7b5ea7; transform: scale(1.1); }
+
+/* Bouton de retour vers la liste */
+.bouton-retour {
+  background: #fff; color: #1a3a5c; border: 1.5px solid #1a3a5c; border-radius: 24px;
+  padding: 9px 24px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  display: block; width: fit-content; margin: 16px auto;
+  text-decoration: none; font-family: 'Source Sans 3', sans-serif;
+}
+.bouton-retour:hover { background: #1a3a5c; color: #fff; }
