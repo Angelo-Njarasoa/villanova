@@ -19,7 +19,7 @@ const EVENEMENTS_DEMO = [
     periodeDate:  { fr: 'Du 18 au 20 septembre 2025' },
     premierJour: '18', premierMois: 'SEP', dernierJour: '20', dernierMois: 'SEP',
     lieu: { nom: 'Théâtre Municipal', adresse: 'Place du Général de Gaulle, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/jazz/400/250'
+    imageSource: 'https://picsum.photos/seed/jazz/1200/800'
   },
   {
     identifiant: 2,
@@ -28,7 +28,7 @@ const EVENEMENTS_DEMO = [
     periodeDate:  { fr: 'Du 1er octobre au 15 novembre 2025' },
     premierJour: '01', premierMois: 'OCT', dernierJour: '15', dernierMois: 'NOV',
     lieu: { nom: "Galerie d'Art Moderne", adresse: 'Rue des Arts, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/expo/400/250'
+    imageSource: 'https://picsum.photos/seed/expo/1200/800'
   },
   {
     identifiant: 3,
@@ -37,7 +37,7 @@ const EVENEMENTS_DEMO = [
     periodeDate:  { fr: 'Du 5 au 7 novembre 2025' },
     premierJour: '05', premierMois: 'NOV', dernierJour: '07', dernierMois: 'NOV',
     lieu: { nom: 'Cinéma Le Palais', adresse: 'Avenue de la République, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/film/400/250'
+    imageSource: 'https://picsum.photos/seed/film/1200/800'
   },
   {
     identifiant: 4,
@@ -46,7 +46,7 @@ const EVENEMENTS_DEMO = [
     periodeDate:  { fr: 'Du 15 au 24 décembre 2025' },
     premierJour: '15', premierMois: 'DÉC', dernierJour: '24', dernierMois: 'DÉC',
     lieu: { nom: 'Place du Village', adresse: 'Centre-ville, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/noel/400/250'
+    imageSource: 'https://picsum.photos/seed/noel/1200/800'
   },
   {
     identifiant: 5,
@@ -55,7 +55,7 @@ const EVENEMENTS_DEMO = [
     periodeDate:  { fr: 'Le 22 novembre 2025' },
     premierJour: '22', premierMois: 'NOV', dernierJour: '22', dernierMois: 'NOV',
     lieu: { nom: 'Salle des Fêtes', adresse: 'Chemin des Oliviers, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/danse/400/250'
+    imageSource: 'https://picsum.photos/seed/danse/1200/800'
   },
   {
     identifiant: 6,
@@ -64,7 +64,7 @@ const EVENEMENTS_DEMO = [
     periodeDate:  { fr: 'Le 10 octobre 2025' },
     premierJour: '10', premierMois: 'OCT', dernierJour: '10', dernierMois: 'OCT',
     lieu: { nom: 'Médiathèque Municipale', adresse: 'Rue de la Bibliothèque, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/conf/400/250'
+    imageSource: 'https://picsum.photos/seed/conf/1200/800'
   }
 ];
 
@@ -411,7 +411,7 @@ function creerCarteEvenement(ev, index) {
   image.width     = 120;
   image.height    = 88;
   image.alt       = `Photo : ${ev.titre.fr}`;
-  image.src       = ev.imageSource || `https://picsum.photos/seed/${ev.identifiant}/400/250`;
+  image.src       = ev.imageSource || `https://picsum.photos/seed/${ev.identifiant}/1200/800`;
 
   const infos = document.createElement('div');
   infos.className = 'carte-infos';
@@ -477,7 +477,7 @@ function mettreAJourCalendrier(index) {
   const boite         = document.getElementById('boite-calendrier');
 
   // Remplace l'image par l'affiche de l'événement sélectionné
-  if (boiteImage) { boiteImage.src = ev.imageSource || `https://picsum.photos/seed/${ev.identifiant}/400/330`; boiteImage.alt = ''; }
+  if (boiteImage) { boiteImage.src = ev.imageSource || `https://picsum.photos/seed/${ev.identifiant}/1200/800`; boiteImage.alt = ''; }
   if (elementJour)  elementJour.textContent  = ev.premierJour  || '--';
   if (elementMois)  elementMois.textContent  = ev.premierMois  || '---';
   if (nomEvenement) nomEvenement.textContent = ev.titre.fr;
@@ -614,7 +614,7 @@ function afficherDetailEvenement(ev) {
 
   const photoprincipale = document.getElementById('photo-evenement');
   if (photoprincipale) {
-    photoprincipale.src = ev.imageSource || `https://picsum.photos/seed/${ev.identifiant}/800/400`;
+    photoprincipale.src = ev.imageSource || `https://picsum.photos/seed/${ev.identifiant}/1200/800`;
     photoprincipale.alt = `Photo : ${ev.titre.fr}`;
   }
 
