@@ -1,7 +1,7 @@
 # Villa Nova — Agenda Culturel Corse
 
 Application web mobile-first centralisant les événements culturels de la ville fictive de Villa Nova (Corse).  
-Projet Bloc 2 — Titre RNCP Développeur Web Full Stack · La Plateforme_
+Projet Bloc 2 — Titre RNCP Développeur Web Full Stack ·
 
 ---
 
