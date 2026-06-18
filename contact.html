@@ -8,91 +8,213 @@
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* Styles propres à la page contact */
-    .page-contact { padding: 20px 16px 32px; max-width: 700px; margin: 0 auto; }
-    @media (min-width: 768px) { .page-contact { padding: 28px 32px 40px; } }
+
+    .page-contact {
+      padding: 20px 16px 32px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .page-contact {
+        padding: 28px 32px 40px;
+      }
+    }
 
     .page-contact h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem; color: #1a3a5c; margin-bottom: 6px;
+      font-size: 1.6rem;
+      color: #1a3a5c;
+      margin-bottom: 6px;
     }
-    .page-contact .sous-titre { font-size: 0.9rem; color: #666; margin-bottom: 28px; line-height: 1.5; }
+    .page-contact .sous-titre {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
 
     /* Bloc des coordonnées fictives */
     .infos-contact {
-      background: #fff; border-radius: 8px; border: 1px solid #ccc;
-      padding: 20px; margin-bottom: 24px;
-      display: flex; flex-direction: column; gap: 14px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
     .infos-contact h2 {
-      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1px; color: #7b5ea7; margin-bottom: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #7b5ea7;
+      margin-bottom: 4px;
     }
-    .ligne-info { display: flex; align-items: flex-start; gap: 12px; }
+
+    .ligne-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
     .icone-info {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: #7b5ea7; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #7b5ea7;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
     }
-    .texte-info { display: flex; flex-direction: column; gap: 2px; }
-    .texte-info strong { font-size: 0.9rem; color: #1a3a5c; }
-    .texte-info span   { font-size: 0.85rem; color: #555; line-height: 1.5; }
+    .texte-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .texte-info strong {
+      font-size: 0.9rem;
+      color: #1a3a5c;
+    }
+    .texte-info span {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.5;
+    }
 
     /* Bloc formulaire de contact */
     .bloc-formulaire {
-      background: #fff; border-radius: 8px; border: 1px solid #ccc;
-      padding: 20px; display: flex; flex-direction: column; gap: 16px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     .bloc-formulaire h2 {
-      font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1a3a5c; margin-bottom: 4px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #1a3a5c;
+      margin-bottom: 4px;
     }
 
     /* Groupes de champs */
-    .groupe { display: flex; flex-direction: column; gap: 5px; }
-    .groupe label { font-size: 0.85rem; font-weight: 600; color: #333; }
-    .groupe .optionnel { font-size: 0.78rem; color: #888; font-weight: 400; font-style: italic; }
+    .groupe {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .groupe label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .groupe .optionnel {
+      font-size: 0.78rem;
+      color: #888;
+      font-weight: 400;
+      font-style: italic;
+    }
     .groupe input,
     .groupe select,
     .groupe textarea {
-      width: 100%; padding: 10px 14px;
-      border: 1.5px solid #ccc; border-radius: 6px;
-      font-size: 0.9rem; font-family: 'Source Sans 3', sans-serif;
-      color: #333; background: #fafafa; transition: border-color 0.2s;
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-family: 'Source Sans 3', sans-serif;
+      color: #333;
+      background: #fafafa;
+      transition: border-color 0.2s;
     }
     .groupe input:focus,
     .groupe select:focus,
-    .groupe textarea:focus { border-color: #7b5ea7; background: #fff; }
-    .groupe textarea { resize: vertical; min-height: 110px; }
+    .groupe textarea:focus {
+      border-color: #7b5ea7;
+      background: #fff;
+    }
+    .groupe textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
 
     /* Deux champs côte à côte sur écran plus large */
-    .rangee-champs { display: flex; flex-direction: column; gap: 16px; }
-    @media (min-width: 600px) { .rangee-champs { flex-direction: row; } .rangee-champs .groupe { flex: 1; } }
+    .rangee-champs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (min-width: 600px) {
+      .rangee-champs {
+        flex-direction: row;
+      }
+      .rangee-champs .groupe {
+        flex: 1;
+      }
+    }
 
-    /* Message d'erreur sous un champ invalide */
-    .erreur-champ { font-size: 0.78rem; color: #c0392b; display: none; }
+    /* État invalide : bordure rouge + message visible */
+    .erreur-champ {
+      font-size: 0.78rem;
+      color: #c0392b;
+      display: none;
+    }
     .groupe.invalide input,
     .groupe.invalide select,
-    .groupe.invalide textarea { border-color: #c0392b; }
-    .groupe.invalide .erreur-champ { display: block; }
+    .groupe.invalide textarea {
+      border-color: #c0392b;
+    }
+    .groupe.invalide .erreur-champ {
+      display: block;
+    }
 
-    /* Bouton d'envoi du formulaire */
     .bouton-envoyer {
-      background: #4caf82; color: #fff; border: none; border-radius: 24px;
-      padding: 12px 32px; font-size: 15px; font-weight: 700;
+      background: #4caf82;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 700;
       font-family: 'Source Sans 3', sans-serif;
-      cursor: pointer; transition: background 0.2s; align-self: flex-start;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
     }
-    .bouton-envoyer:hover { background: #3a9070; }
+    .bouton-envoyer:hover {
+      background: #3a9070;
+    }
 
-    /* Message de confirmation affiché après une soumission valide */
+    /* Affiché après une soumission valide à la place du formulaire */
     .message-succes {
-      display: none; background: #e8f8f1; border: 1.5px solid #4caf82;
-      border-radius: 8px; padding: 20px; text-align: center; color: #1a5c3a;
+      display: none;
+      background: #e8f8f1;
+      border: 1.5px solid #4caf82;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      color: #1a5c3a;
     }
-    .message-succes.visible { display: block; }
-    .message-succes .icone-succes { font-size: 2.5rem; margin-bottom: 8px; }
-    .message-succes h3 { font-size: 1.1rem; margin-bottom: 6px; }
-    .message-succes p  { font-size: 0.9rem; color: #555; }
+    .message-succes.visible {
+      display: block;
+    }
+    .message-succes .icone-succes {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+    .message-succes h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .message-succes p {
+      font-size: 0.9rem;
+      color: #555;
+    }
   </style>
 </head>
 
@@ -191,7 +313,7 @@
         </div>
       </div>
 
-      <!-- Formulaire de contact : validé par initialiserFormulaireContact() dans app.js -->
+      <!-- Formulaire de contact : validé par js/modules/contact.js -->
       <div class="bloc-formulaire" role="region" aria-label="Formulaire de contact">
         <h2>Envoyer un message</h2>
 
@@ -268,6 +390,6 @@
     <a href="contact.html" class="bouton-contact-pied">Contact</a>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

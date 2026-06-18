@@ -1,0 +1,151 @@
+// ============================================
+// VILLA NOVA — Section calendrier
+// ============================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.section-calendrier {
+  background: linear-gradient(180deg, #d0d0d0 0%, #b8b8b8 100%);
+  padding: 28px $spacing-md 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @include responsive(tablet) { padding: 36px $spacing-xl 28px; }
+}
+
+.titre-calendrier {
+  font-family: $font-title;
+  font-size: 1.1rem;
+  color: $color-navy;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.rangee-calendrier {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  @include responsive(tablet) { gap: 28px; }
+}
+
+.fleche-calendrier {
+  background: none;
+  border: none;
+  color: $color-secondary;
+  font-size: 3.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.15s;
+  font-weight: 300;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba($color-secondary, 0.14);
+    transform: scale(1.1);
+  }
+
+  @include responsive(tablet) { font-size: 4.5rem; }
+}
+
+.boite-calendrier {
+  width: 200px;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  background: #555;
+  display: block;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus-visible {
+    outline: 4px solid $color-primary !important;
+    outline-offset: 4px !important;
+    transform: scale(1.03);
+  }
+
+  &:hover .boite-image { transform: scale(1.05); }
+
+  @include responsive(tablet)  { width: 260px; height: 290px; }
+  @include responsive(desktop) { width: 300px; height: 330px; }
+}
+
+.boite-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.boite-superposition {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent 0%, rgba($color-navy, 0.92) 60%);
+  padding: 30px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cal-jour {
+  font-size: 3rem;
+  font-weight: 700;
+  color: $color-white;
+  line-height: 1;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+
+  @include responsive(tablet) { font-size: 3.8rem; }
+}
+.cal-mois {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.cal-nom-evenement {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  margin-top: 5px;
+  line-height: 1.3;
+  max-width: 90%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.compteur-calendrier {
+  font-size: 0.8rem;
+  color: $color-text-light;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.bouton-agenda {
+  @include btn-primary;
+  padding: 12px 32px;
+  font-size: 15px;
+}

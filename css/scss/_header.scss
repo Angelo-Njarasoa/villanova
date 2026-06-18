@@ -1,0 +1,155 @@
+// ============================================
+// VILLA NOVA — En-tête & menu burger
+// ============================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.entete {
+  background: #f5f5f5;
+  border-bottom: 1px solid $color-border;
+  padding: $spacing-sm $spacing-md;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @include flex-between;
+  min-height: 94px;
+
+  @include responsive(tablet) {
+    padding: $spacing-sm $spacing-xl;
+  }
+}
+
+// Centré absolument pour ne pas décaler les boutons latéraux
+.entete-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logo-texte {
+  font-family: $font-title;
+  font-size: 22px;
+  font-style: italic;
+  color: $color-navy;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.logo-cercle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid $color-navy;
+  margin-top: 2px;
+  background: $color-white;
+  @include flex-center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.bouton-menu {
+  @include btn-primary;
+  padding: 8px 20px;
+  font-size: 13px;
+}
+
+.bouton-recherche {
+  @include btn-outline;
+  padding: 8px 20px;
+  font-size: 13px;
+}
+
+// ---- Tiroir latéral ----
+
+// Fond semi-transparent : cliquer dessus ferme le tiroir
+.fond-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+
+  &.ouvert { display: block; }
+}
+
+// La transition sur `left` crée l'animation de glissement
+.tiroir-nav {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background: $color-navy;
+  z-index: 300;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  &.ouvert { left: 0; }
+}
+
+.tiroir-entete {
+  @include flex-between;
+  padding: 20px;
+  background: #0f2440;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+
+  span {
+    color: $color-white;
+    font-family: $font-title;
+    font-size: 18px;
+    font-style: italic;
+  }
+}
+
+.bouton-fermer-menu {
+  background: none;
+  border: none;
+  color: $color-white;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  font-weight: 300;
+
+  &:hover { background: rgba(255, 255, 255, 0.15); }
+}
+
+.tiroir-nav nav {
+  flex: 1;
+
+  ul { padding: 20px 0; }
+
+  ul li a {
+    display: block;
+    padding: 18px 28px;
+    color: $color-white;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s, padding-left 0.2s, color 0.2s;
+
+    &:hover {
+      background: rgba($color-primary, 0.2);
+      padding-left: 38px;
+      color: #7ddbb4;
+    }
+  }
+}
