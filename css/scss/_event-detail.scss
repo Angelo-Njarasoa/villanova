@@ -119,7 +119,7 @@
   font-size: 0.9rem;
   text-decoration: underline;
 
-  &:hover { color: darken($color-secondary, 15%); }
+  &:hover { color: $color-secondary-dark; }
 }
 
 .presentation-evenement {

@@ -43,7 +43,7 @@
   background: $color-primary;
   color: $color-white;
 
-  &:hover { background: darken($color-primary, 10%); }
+  &:hover { background: $color-primary-dark; }
 }
 
 @mixin btn-outline {

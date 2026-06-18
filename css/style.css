@@ -1,14 +1,4 @@
-/* ============================================
-   VILLA NOVA — Feuille de style principale
-   Mobile First | WCAG AA
-   ============================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
-
-/* ============================================
-   RESET
-   ============================================ */
-
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap");
 *,
 *::before,
 *::after {
@@ -23,9 +13,9 @@ html {
 }
 
 body {
-  font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
   background: #d8d8d8;
-  color: #333;
+  color: #333333;
   min-height: 100vh;
 }
 
@@ -44,17 +34,12 @@ ul {
   list-style: none;
 }
 
-/* ============================================
-   ACCESSIBILITÉ
-   ============================================ */
-
-/* Permet aux utilisateurs clavier de sauter directement au contenu */
 .lien-evitement {
   position: absolute;
   top: -60px;
   left: 8px;
   background: #1a3a5c;
-  color: #fff;
+  color: #ffffff;
   padding: 10px 18px;
   border-radius: 0 0 6px 6px;
   font-size: 14px;
@@ -67,7 +52,6 @@ ul {
   top: 0;
 }
 
-/* Masqué visuellement mais lisible par les lecteurs d'écran */
 .masque-visuellement {
   position: absolute;
   width: 1px;
@@ -80,22 +64,18 @@ ul {
   border: 0;
 }
 
-/* Contour de focus visible uniquement à la navigation clavier */
 *:focus {
   outline: none;
 }
+
 *:focus-visible {
   outline: 3px solid #4caf82 !important;
   outline-offset: 3px !important;
 }
 
-/* ============================================
-   EN-TÊTE — sticky, logo centré
-   ============================================ */
-
 .entete {
   background: #f5f5f5;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #cccccc;
   padding: 8px 16px;
   position: sticky;
   top: 0;
@@ -111,7 +91,6 @@ ul {
   }
 }
 
-/* Centré absolument pour ne pas décaler les boutons latéraux */
 .entete-logo {
   position: absolute;
   left: 50%;
@@ -125,7 +104,7 @@ ul {
 }
 
 .logo-texte {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 22px;
   font-style: italic;
   color: #1a3a5c;
@@ -140,7 +119,7 @@ ul {
   overflow: hidden;
   border: 3px solid #1a3a5c;
   margin-top: 2px;
-  background: #fff;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,44 +132,49 @@ ul {
 }
 
 .bouton-menu {
-  background: #4caf82;
-  color: #fff;
+  display: inline-block;
   border: none;
   border-radius: 24px;
-  padding: 8px 20px;
-  font-size: 13px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 14px;
   font-weight: 700;
-  font-family: 'Source Sans 3', sans-serif;
   cursor: pointer;
   transition: background 0.2s;
+  text-decoration: none;
+  background: #4caf82;
+  color: #ffffff;
 }
 .bouton-menu:hover {
   background: #3a9070;
 }
-
-.bouton-recherche {
-  background: #fff;
-  color: #333;
-  border: 1.5px solid #555;
-  border-radius: 24px;
+.bouton-menu {
   padding: 8px 20px;
   font-size: 13px;
-  font-weight: 600;
-  font-family: 'Source Sans 3', sans-serif;
+}
+
+.bouton-recherche {
+  display: inline-block;
+  border: none;
+  border-radius: 24px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.2s;
+  text-decoration: none;
+  background: #ffffff;
+  color: #1a3a5c;
+  border: 1.5px solid #1a3a5c;
 }
 .bouton-recherche:hover {
   background: #1a3a5c;
-  color: #fff;
-  border-color: #1a3a5c;
+  color: #ffffff;
+}
+.bouton-recherche {
+  padding: 8px 20px;
+  font-size: 13px;
 }
 
-/* ============================================
-   MENU BURGER — tiroir latéral
-   ============================================ */
-
-/* Fond semi-transparent : cliquer dessus ferme le tiroir */
 .fond-menu {
   display: none;
   position: fixed;
@@ -202,7 +186,6 @@ ul {
   display: block;
 }
 
-/* La transition sur `left` crée l'animation de glissement */
 .tiroir-nav {
   position: fixed;
   top: 0;
@@ -230,8 +213,8 @@ ul {
   flex-shrink: 0;
 }
 .tiroir-entete span {
-  color: #fff;
-  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 18px;
   font-style: italic;
 }
@@ -239,7 +222,7 @@ ul {
 .bouton-fermer-menu {
   background: none;
   border: none;
-  color: #fff;
+  color: #ffffff;
   font-size: 30px;
   line-height: 1;
   cursor: pointer;
@@ -261,7 +244,7 @@ ul {
 .tiroir-nav nav ul li a {
   display: block;
   padding: 18px 28px;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 600;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -273,10 +256,6 @@ ul {
   color: #7ddbb4;
 }
 
-/* ============================================
-   CARROUSEL HERO
-   ============================================ */
-
 .banniere-hero {
   background: #7b5ea7;
   padding: 6px 44px 0;
@@ -284,12 +263,12 @@ ul {
   overflow: hidden;
 }
 
-/* La piste se translate horizontalement via JS */
 .piste-carrousel {
   display: flex;
   transition: transform 0.42s ease;
   will-change: transform;
 }
+
 .diapo-carrousel {
   min-width: 100%;
 }
@@ -300,7 +279,7 @@ ul {
   margin: 0 auto;
   max-width: 720px;
   padding: 18px 20px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   cursor: pointer;
   transition: opacity 0.2s;
@@ -315,8 +294,9 @@ ul {
   letter-spacing: 1px;
   opacity: 0.7;
 }
+
 .diapo-titre {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.3;
@@ -327,11 +307,13 @@ ul {
     font-size: 2rem;
   }
 }
+
 .diapo-date {
   font-size: 0.85rem;
   opacity: 0.88;
   margin-top: 5px;
 }
+
 .diapo-lieu {
   font-size: 0.8rem;
   opacity: 0.72;
@@ -344,7 +326,7 @@ ul {
   transform: translateY(-55%);
   background: rgba(255, 255, 255, 0.2);
   border: none;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.6rem;
   width: 34px;
   height: 34px;
@@ -384,12 +366,8 @@ ul {
   display: inline-block;
 }
 .points-carrousel span.actif {
-  background: #fff;
+  background: #ffffff;
 }
-
-/* ============================================
-   LISTE DES ÉVÉNEMENTS
-   ============================================ */
 
 .section-evenements {
   padding: 14px;
@@ -405,12 +383,19 @@ ul {
   flex-direction: column;
   gap: 12px;
 }
+@media (min-width: 1024px) {
+  .liste-evenements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
 
 .carte-evenement {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  background: #fff;
+  background: #ffffff;
   border: 2px solid transparent;
   border-radius: 6px;
   padding: 10px;
@@ -429,20 +414,30 @@ ul {
   transform: translateY(-2px);
   outline: none !important;
 }
+@media (min-width: 1024px) {
+  .carte-evenement {
+    flex-direction: column;
+  }
+}
 
-/* loading="lazy" côté HTML, la taille est fixée ici pour éviter le layout shift */
 .carte-image {
   width: 90px;
   height: 68px;
   border-radius: 4px;
   object-fit: cover;
   flex-shrink: 0;
-  background: #ccc;
+  background: #cccccc;
 }
 @media (min-width: 768px) {
   .carte-image {
     width: 120px;
     height: 88px;
+  }
+}
+@media (min-width: 1024px) {
+  .carte-image {
+    width: 100%;
+    height: 150px;
   }
 }
 
@@ -452,26 +447,29 @@ ul {
   flex-direction: column;
   gap: 3px;
 }
+
 .carte-titre {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 0.98rem;
   font-weight: 700;
   color: #1a3a5c;
   line-height: 1.3;
 }
+
 .carte-date {
   font-size: 0.8rem;
   color: #7b5ea7;
   font-weight: 600;
 }
+
 .carte-lieu {
   font-size: 0.8rem;
-  color: #666;
+  color: #666666;
 }
-/* -webkit-line-clamp : préfixé car la spec `line-clamp` n'est pas encore adoptée partout */
+
 .carte-description {
   font-size: 0.8rem;
-  color: #666;
+  color: #666666;
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -483,33 +481,14 @@ ul {
 .message-chargement {
   text-align: center;
   padding: 32px;
-  color: #666;
+  color: #666666;
 }
+
 .message-erreur {
   text-align: center;
   padding: 32px;
   color: #c0392b;
 }
-
-/* Grille 2 colonnes à partir de 1024px */
-@media (min-width: 1024px) {
-  .liste-evenements {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .carte-evenement {
-    flex-direction: column;
-  }
-  .carte-image {
-    width: 100%;
-    height: 150px;
-  }
-}
-
-/* ============================================
-   SECTION CALENDRIER
-   ============================================ */
 
 .section-calendrier {
   background: linear-gradient(180deg, #d0d0d0 0%, #b8b8b8 100%);
@@ -526,7 +505,7 @@ ul {
 }
 
 .titre-calendrier {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 1.1rem;
   color: #1a3a5c;
   font-style: italic;
@@ -590,6 +569,9 @@ ul {
   outline-offset: 4px !important;
   transform: scale(1.03);
 }
+.boite-calendrier:hover .boite-image {
+  transform: scale(1.05);
+}
 @media (min-width: 768px) {
   .boite-calendrier {
     width: 260px;
@@ -611,9 +593,6 @@ ul {
   object-fit: cover;
   transition: transform 0.3s;
 }
-.boite-calendrier:hover .boite-image {
-  transform: scale(1.05);
-}
 
 .boite-superposition {
   position: absolute;
@@ -630,7 +609,7 @@ ul {
 .cal-jour {
   font-size: 3rem;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
   line-height: 1;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
@@ -639,6 +618,7 @@ ul {
     font-size: 3.8rem;
   }
 }
+
 .cal-mois {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
@@ -647,6 +627,7 @@ ul {
   font-weight: 600;
   margin-top: 2px;
 }
+
 .cal-nom-evenement {
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.75);
@@ -663,90 +644,89 @@ ul {
 
 .compteur-calendrier {
   font-size: 0.8rem;
-  color: #666;
+  color: #666666;
   text-align: center;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .bouton-agenda {
-  background: #4caf82;
-  color: #fff;
+  display: inline-block;
   border: none;
   border-radius: 24px;
-  padding: 12px 32px;
-  font-size: 15px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 14px;
   font-weight: 700;
-  font-family: 'Source Sans 3', sans-serif;
   cursor: pointer;
   transition: background 0.2s;
-  display: inline-block;
   text-decoration: none;
+  background: #4caf82;
+  color: #ffffff;
 }
 .bouton-agenda:hover {
   background: #3a9070;
 }
-
-/* ============================================
-   PIED DE PAGE
-   ============================================ */
+.bouton-agenda {
+  padding: 12px 32px;
+  font-size: 15px;
+}
 
 .pied-page {
   background: #7b5ea7;
-  padding: 10px 16px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 @media (min-width: 768px) {
   .pied-page {
-    padding: 10px 32px;
+    padding: 8px 32px;
   }
 }
 
-/* clip-path crée la pointe de flèche gauche */
 .bouton-accueil {
-  background: #4caf82;
-  color: #fff;
+  display: inline-block;
   border: none;
-  border-radius: 22px;
-  padding: 9px 24px 9px 30px;
+  border-radius: 24px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  font-family: 'Source Sans 3', sans-serif;
   cursor: pointer;
   transition: background 0.2s;
-  display: inline-block;
   text-decoration: none;
-  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 50%);
+  background: #4caf82;
+  color: #ffffff;
 }
 .bouton-accueil:hover {
   background: #3a9070;
 }
+.bouton-accueil {
+  padding: 9px 24px 9px 30px;
+  font-size: 14px;
+  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 50%);
+}
 
-/* clip-path crée la pointe de flèche droite */
 .bouton-contact-pied {
-  background: #4caf82;
-  color: #fff;
+  display: inline-block;
   border: none;
-  border-radius: 22px;
-  padding: 9px 30px 9px 24px;
+  border-radius: 24px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  font-family: 'Source Sans 3', sans-serif;
   cursor: pointer;
   transition: background 0.2s;
-  display: inline-block;
   text-decoration: none;
-  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+  background: #4caf82;
+  color: #ffffff;
 }
 .bouton-contact-pied:hover {
   background: #3a9070;
 }
-
-/* ============================================
-   PAGE DÉTAIL ÉVÉNEMENT
-   ============================================ */
+.bouton-contact-pied {
+  padding: 9px 30px 9px 24px;
+  font-size: 14px;
+  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+}
 
 .bandeau-evenement {
   background: #555;
@@ -754,9 +734,9 @@ ul {
   text-align: center;
 }
 .bandeau-evenement h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 1rem;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
 }
 @media (min-width: 768px) {
@@ -779,7 +759,6 @@ ul {
   display: flex;
   gap: 10px;
   justify-content: center;
-  /* Margin négatif pour chevaucher l'image en dessous */
   margin-bottom: -28px;
   position: relative;
   z-index: 2;
@@ -790,19 +769,21 @@ ul {
   height: 60px;
   border-radius: 50%;
   background: #7b5ea7;
-  color: #fff;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2.5px solid #fff;
+  border: 2.5px solid #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
 }
+
 .badge-jour {
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1;
 }
+
 .badge-mois {
   font-size: 0.58rem;
   text-transform: uppercase;
@@ -814,7 +795,7 @@ ul {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
-  background: #ccc;
+  background: #cccccc;
 }
 @media (min-width: 768px) {
   .photo-principale {
@@ -840,17 +821,17 @@ ul {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #666;
+  color: #666666;
   margin-bottom: 8px;
 }
 .bloc-detail p,
 .bloc-detail li {
   font-size: 0.9rem;
-  color: #333;
+  color: #333333;
   line-height: 1.6;
 }
 .bloc-detail ul {
-  padding-left: 18px;
+  padding-left: 16px;
 }
 
 .ligne-icone {
@@ -859,18 +840,20 @@ ul {
   gap: 10px;
   margin-top: 8px;
 }
+
 .cercle-icone {
   width: 36px;
   height: 36px;
   border-radius: 50%;
   background: #7b5ea7;
-  color: #fff;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   font-size: 15px;
 }
+
 .ligne-icone a {
   color: #7b5ea7;
   font-size: 0.9rem;
@@ -889,14 +872,14 @@ ul {
   }
 }
 .presentation-evenement h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 1.1rem;
   color: #1a3a5c;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .presentation-evenement p {
   font-size: 0.9rem;
-  color: #333;
+  color: #333333;
   line-height: 1.7;
   margin-bottom: 8px;
 }
@@ -909,12 +892,13 @@ ul {
   gap: 16px;
   border-top: 1px solid #ddd;
 }
+
 .bouton-reseau {
   width: 44px;
   height: 44px;
   border-radius: 50%;
   background: #1a3a5c;
-  color: #fff;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -931,22 +915,28 @@ ul {
 }
 
 .bouton-retour {
-  background: #fff;
+  display: inline-block;
+  border: none;
+  border-radius: 24px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  background: #ffffff;
   color: #1a3a5c;
   border: 1.5px solid #1a3a5c;
-  border-radius: 24px;
-  padding: 9px 24px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: block;
-  width: fit-content;
-  margin: 16px auto;
-  text-decoration: none;
-  font-family: 'Source Sans 3', sans-serif;
 }
 .bouton-retour:hover {
   background: #1a3a5c;
-  color: #fff;
+  color: #ffffff;
 }
+.bouton-retour {
+  display: block;
+  width: fit-content;
+  margin: 16px auto;
+  font-size: 13px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,9 @@
+{
+  "name": "villa-nova",
+  "version": "1.0.0",
+  "description": "Agenda culturel Villa Nova — Corse",
+  "scripts": {
+    "watch": "sass --watch css/style.scss:css/style.css",
+    "build": "sass --style=compressed css/style.scss:css/style.css"
+  }
+}
