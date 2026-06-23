@@ -7,7 +7,7 @@ export const EVENEMENTS_DEMO = [
     periodeDate: { fr: 'Du 18 au 20 septembre 2025' },
     premierJour: '18', premierMois: 'SEP', dernierJour: '20', dernierMois: 'SEP',
     lieu: { nom: 'Théâtre Municipal', adresse: 'Place du Général de Gaulle, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/jazz/1200/800'
+    imageSource: 'images/evt_jazz.jpg'
   },
   {
     identifiant: 2,
@@ -16,7 +16,7 @@ export const EVENEMENTS_DEMO = [
     periodeDate: { fr: 'Du 1er octobre au 15 novembre 2025' },
     premierJour: '01', premierMois: 'OCT', dernierJour: '15', dernierMois: 'NOV',
     lieu: { nom: "Galerie d'Art Moderne", adresse: 'Rue des Arts, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/expo/1200/800'
+    imageSource: 'images/evt_expo.jpg'
   },
   {
     identifiant: 3,
@@ -25,7 +25,7 @@ export const EVENEMENTS_DEMO = [
     periodeDate: { fr: 'Du 5 au 7 novembre 2025' },
     premierJour: '05', premierMois: 'NOV', dernierJour: '07', dernierMois: 'NOV',
     lieu: { nom: 'Cinéma Le Palais', adresse: 'Avenue de la République, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/film/1200/800'
+    imageSource: 'images/evt_cinema.jpg'
   },
   {
     identifiant: 4,
@@ -34,7 +34,7 @@ export const EVENEMENTS_DEMO = [
     periodeDate: { fr: 'Du 15 au 24 décembre 2025' },
     premierJour: '15', premierMois: 'DÉC', dernierJour: '24', dernierMois: 'DÉC',
     lieu: { nom: 'Place du Village', adresse: 'Centre-ville, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/noel/1200/800'
+    imageSource: 'images/evt_noel.jpg'
   },
   {
     identifiant: 5,
@@ -43,7 +43,7 @@ export const EVENEMENTS_DEMO = [
     periodeDate: { fr: 'Le 22 novembre 2025' },
     premierJour: '22', premierMois: 'NOV', dernierJour: '22', dernierMois: 'NOV',
     lieu: { nom: 'Salle des Fêtes', adresse: 'Chemin des Oliviers, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/danse/1200/800'
+    imageSource: 'images/evt_danse.jpg'
   },
   {
     identifiant: 6,
@@ -52,6 +52,6 @@ export const EVENEMENTS_DEMO = [
     periodeDate: { fr: 'Le 10 octobre 2025' },
     premierJour: '10', premierMois: 'OCT', dernierJour: '10', dernierMois: 'OCT',
     lieu: { nom: 'Médiathèque Municipale', adresse: 'Rue de la Bibliothèque, Villa Nova' },
-    imageSource: 'https://picsum.photos/seed/conf/1200/800'
+    imageSource: 'images/evt_conf.jpg'
   }
 ];
